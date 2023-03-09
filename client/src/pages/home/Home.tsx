@@ -21,6 +21,7 @@ const Home: React.FC = () => {
 
     return (
         <>
+        <div className='wrapper'>
             <div className='topHalf'>
                 <img className='monster' src={Monster} alt='img' />
                 <div className='welcome'>
@@ -50,11 +51,12 @@ const Home: React.FC = () => {
                     </Button>
                 </div>
                 <div>
-                    <BigButton color='$red' onClick={handleStartClick} >
+                    <BigButton color='$yellow' onClick={handleStartClick} >
                         START
                     </BigButton>
                 </div>
 
+            </div>
             </div>
         </>
     );
