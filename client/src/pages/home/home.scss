@@ -17,8 +17,8 @@ $red: #d90429;
         justify-content: center;
         align-items: center;
         .welcome {
-            margin: 4rem 0rem ;
-            padding: 3rem 7rem;
+            margin: 4rem 3rem ;
+            padding: 4rem 7rem;
             border: 0.2rem solid black;
             border-radius: 2%;
             box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 16px;
@@ -33,6 +33,7 @@ $red: #d90429;
         }
 
         .monster {
+            margin: 0rem;
             width: 10rem;
             animation: updown 4s linear infinite;
         }

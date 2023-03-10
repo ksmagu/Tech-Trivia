@@ -1,4 +1,3 @@
-// import React, { FC, ReactNode, FormEvent } from 'react';
 import React from 'react';
 
 import './button.scss';
