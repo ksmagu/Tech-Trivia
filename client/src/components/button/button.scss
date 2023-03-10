@@ -10,6 +10,7 @@ button {
     outline: none;
 
     /* Adding custom styling */
+    cursor: pointer;
     margin: 1rem;
     transition: all 0.2s ease;
     background-color: $orange;
@@ -21,7 +22,7 @@ button {
     &:active {
         box-shadow: none;
         transform: translateY(0.3rem);
-        background-color: #c15a19;
+        background-color: #a84e16;
         color: white;
         border: 1px solid gray;
     }
