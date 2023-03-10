@@ -15,11 +15,24 @@ interface QuestionsArray {
     answers: AnswersArray[];
 }
 
+interface Answer {
+    question_id: number;
+    answer_id: number;
+    answer: string;
+}
+interface Answers {
+    question_id: number;
+    question: string;
+    answers: AnswersArray[];
+    users_answer: Answer;
+}
+
 const Questions: React.FC = () => {
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
-    const [userAnswers, setUserAnswers] = useState([]);
-    console.log(questions);
+    const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
+
+    console.log(userAnswers);
     // getting questions for selected topic
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -41,9 +54,55 @@ const Questions: React.FC = () => {
         e.preventDefault();
         setCurrentQuestionIndex(currentQuestionIndex + 1); // Increment the current question index on button click
     };
+
     // on the last question button click relocates to show results
     const showResults = (e: React.FormEvent) => {
         e.preventDefault();
+    };
+
+    // saving user answers to an array
+    const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // defining data to be used
+        const questionId = questions[currentQuestionIndex].id; // saving current question ID
+        const answerId = Number(e.target.id); // saving answer id to the current question
+
+        // saving data for chosen user answer
+        const userAnswer = {
+            question_id: questions[currentQuestionIndex].id,
+            answer_id: answerId,
+            answer: e.target.value,
+        };
+        /* to check if answer was already provided for current question we need to check 
+        if there is answer.question_id === questionId in the array and getting its index
+        */
+
+        const questionIndex = userAnswers.findIndex(
+            (answer) => answer.question_id === questionId
+        );
+
+        /* now we can check if there is already answer for current question.
+       .findindex() returns index of the array that suits the condition, else it returns -1.
+       So we can check the status to know if  answers was provided. If questionIndex > -1 yes we changed array entry:
+       */
+        if (questionIndex > -1) {
+            const updatedAnswers = [...userAnswers];
+            updatedAnswers[questionIndex] = {
+                ...updatedAnswers[questionIndex],
+                users_answer: userAnswer,
+            };
+            setUserAnswers(updatedAnswers);
+            // else we add new data to the array
+        } else {
+            setUserAnswers([
+                ...userAnswers,
+                {
+                    question_id: questionId,
+                    question: questions[currentQuestionIndex].question,
+                    answers: questions[currentQuestionIndex].answers,
+                    users_answer: userAnswer,
+                },
+            ]);
+        }
     };
 
     return (
@@ -77,6 +136,8 @@ const Questions: React.FC = () => {
                                         name={questions[
                                             currentQuestionIndex
                                         ].id.toString()}
+                                        onChange={(e) => handleAnswerChange(e)}
+                                        value={answer.answer}
                                     />
                                     <label htmlFor={answer.id.toString()}>
                                         {answer.answer}
