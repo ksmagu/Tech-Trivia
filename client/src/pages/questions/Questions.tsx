@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../components/button/Button';
 import './questions.scss';
-
-interface AnswersArray {
-    id: number;
-    answer: string;
-    correct: number;
-}
+import { useNavigate } from 'react-router-dom';
+import { AnswersArray, Answers } from '../../modules';
 
 interface QuestionsArray {
     id: number;
@@ -14,26 +10,17 @@ interface QuestionsArray {
     question: string;
     answers: AnswersArray[];
 }
-
-interface Answer {
-    question_id: number;
-    answer_id: number;
-    answer: string;
-}
-interface Answers {
-    question_id: number;
-    question: string;
-    answers: AnswersArray[];
-    users_answer: Answer;
+interface Props {
+    userAnswers: Answers[];
+    setUserAnswers: React.Dispatch<React.SetStateAction<Answers[]>>;
 }
 
-const Questions: React.FC = () => {
+const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
+    const navigate = useNavigate();
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
-    const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
 
-    console.log(userAnswers);
     // getting questions for selected topic
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -64,6 +51,12 @@ const Questions: React.FC = () => {
 
     // on the last question button click relocates to show results
     const showResults = (e: React.FormEvent) => {
+        if (userAnswers[currentQuestionIndex]?.users_answer) {
+            navigate('/results');
+        } else {
+            // if there in no answer chosen setting the state
+            setNoAnswerChosen(true);
+        }
         e.preventDefault();
         console.log(e.currentTarget.textContent);
     };
