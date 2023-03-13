@@ -3,7 +3,6 @@ $purple: #bbadff;
 $green: #52b788;
 $yellow: #ffd500;
 $red: #d90429;
-
 button {
     /* Removeing default button styling */
     border: none;
@@ -24,5 +23,13 @@ button {
         transform: translateY(0.3rem);
         color: white;
         border: 1px solid gray;
+        background-color:  #ba4d0a;
+    }
+    &.active{
+        box-shadow: none;
+        transform: translateY(0.3rem);
+        color: white;
+        border: 1px solid gray;
+        background-color:#ba4d0a;
     }
 }
