@@ -5,7 +5,7 @@ $yellow: #ffd500;
 $red: #d90429;
 
 .output {
-    background-color: $yellow;
+    background-color: #fcd762;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -30,11 +30,6 @@ $red: #d90429;
         }
         .output__question {
             padding: 2rem;
-        }
-        .output__error {
-            padding-bottom: 1rem;
-            color: $red;
-            font-weight: bold;
         }
     }
 }
