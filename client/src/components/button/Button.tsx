@@ -1,16 +1,24 @@
 import React from 'react';
-
 import './button.scss';
 
 interface ButtonProps {
-    color: string;
+    color?: string;
     onClick: (e: React.FormEvent) => void;
+    active?: boolean;
     children?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ color, onClick, children }) => {
+const Button: React.FC<ButtonProps> = ({
+    color,
+    onClick,
+    active,
+    children,
+}) => {
     return (
-        <button style={{ backgroundColor: color }} onClick={onClick}>
+        <button
+            className={`button${active ? ' active' : ''}`}
+            onClick={onClick}
+        >
             {children}
         </button>
     );
