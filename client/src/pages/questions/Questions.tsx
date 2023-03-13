@@ -166,10 +166,13 @@ const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
                             </Button>
                         )}
                         {/* If answer was not chosen displays error message */}
-                        {noAnswerChosen && (
+                        <div className='emptyDiv'></div>
+                        {noAnswerChosen ? (
                             <div className='output__error'>
                                 <p>If you don't know just guess!</p>
                             </div>
+                        ) : (
+                            <div className='output__error'></div>
                         )}
                     </form>
                 )}
