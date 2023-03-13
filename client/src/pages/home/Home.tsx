@@ -6,26 +6,25 @@ import './home.scss';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
-  const [selectedTopic, setSelectedTopic] = useState<string>('');
-  const [activeButton, setActiveButton] = useState<string>('');
-  const navigate = useNavigate();
+    const [selectedTopic, setSelectedTopic] = useState<string>('');
+    const [activeButton, setActiveButton] = useState<string>('');
+    const navigate = useNavigate();
 
-  const handleClick = (event: React.FormEvent<Element>) => {
-    // Listening to click and setting topic of clicked button
-    const topic = event.currentTarget.textContent || '';
-    console.log(`Selected topic: ${topic}`);
+    const handleClick = (event: React.FormEvent<Element>) => {
+        // Listening to click and setting topic of clicked button
+        const topic = event.currentTarget.textContent || '';
+        console.log(`Selected topic: ${topic}`);
 
-    // Set the active button and topic
-    setActiveButton(topic);
-    setSelectedTopic(topic)
-  };
+        // Set the active button and topic
+        setActiveButton(topic);
+        setSelectedTopic(topic);
+    };
 
-  const handleStartClick = () => {
-    // Navigate to the Questions page with the selected topic
-    navigate(`/questions?topic=${selectedTopic}`);
-    console.log(`Starting trivia for ${selectedTopic}`);
-  };
-
+    const handleStartClick = () => {
+        // Navigate to the Questions page with the selected topic
+        navigate(`/questions?topic=${selectedTopic}`);
+        console.log(`Starting trivia for ${selectedTopic}`);
+    };
 
     return (
         <>
