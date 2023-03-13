@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../components/button/Button';
 import './questions.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface AnswersArray {
     id: number;
@@ -28,6 +29,7 @@ interface Answers {
 }
 
 const Questions: React.FC = () => {
+    const navigate = useNavigate();
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
     const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
@@ -64,6 +66,12 @@ const Questions: React.FC = () => {
 
     // on the last question button click relocates to show results
     const showResults = (e: React.FormEvent) => {
+        if (userAnswers[currentQuestionIndex]?.users_answer) {
+            navigate('/results');
+        } else {
+            // if there in no answer chosen setting the state
+            setNoAnswerChosen(true);
+        }
         e.preventDefault();
         console.log(e.currentTarget.textContent);
     };
