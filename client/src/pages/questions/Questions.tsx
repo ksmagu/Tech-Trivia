@@ -31,6 +31,7 @@ const Questions: React.FC = () => {
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
     const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
+    const [noAnswerChosen, setNoAnswerChosen] = useState(false);
 
     console.log(userAnswers);
     // getting questions for selected topic
@@ -52,16 +53,25 @@ const Questions: React.FC = () => {
     // On button moves to next question
     const nextQuestion = (e: React.FormEvent) => {
         e.preventDefault();
-        setCurrentQuestionIndex(currentQuestionIndex + 1); // Increment the current question index on button click
+        // checking if current question has an answer chosen
+        if (userAnswers[currentQuestionIndex]?.users_answer) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1); // Increment the current question index on button click
+        } else {
+            // if there in no answer chosen setting the state
+            setNoAnswerChosen(true);
+        }
     };
 
     // on the last question button click relocates to show results
     const showResults = (e: React.FormEvent) => {
         e.preventDefault();
+        console.log(e.currentTarget.textContent);
     };
 
     // saving user answers to an array
     const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // if event happens(user choose the answerId, setting state back to false)
+        setNoAnswerChosen(false);
         // defining data to be used
         const questionId = questions[currentQuestionIndex].id; // saving current question ID
         const answerId = Number(e.target.id); // saving answer id to the current question
@@ -161,6 +171,12 @@ const Questions: React.FC = () => {
                             >
                                 FINISH
                             </Button>
+                        )}
+                        {/* If answer was not chosen displays error message */}
+                        {noAnswerChosen && (
+                            <div className='output__error'>
+                                <p>If you don't know just guess!</p>
+                            </div>
                         )}
                     </form>
                 )}

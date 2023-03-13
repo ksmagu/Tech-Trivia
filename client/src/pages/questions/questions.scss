@@ -31,5 +31,10 @@ $red: #d90429;
         .output__question {
             padding: 2rem;
         }
+        .output__error {
+            padding-bottom: 1rem;
+            color: $red;
+            font-weight: bold;
+        }
     }
 }
