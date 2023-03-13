@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '../../components/button/Button';
 import './questions.scss';
 import { useNavigate } from 'react-router-dom';
-
-interface AnswersArray {
-    id: number;
-    answer: string;
-    correct: number;
-}
+import { AnswersArray, Answers } from '../../modules';
 
 interface QuestionsArray {
     id: number;
@@ -15,27 +10,17 @@ interface QuestionsArray {
     question: string;
     answers: AnswersArray[];
 }
-
-interface Answer {
-    question_id: number;
-    answer_id: number;
-    answer: string;
-}
-interface Answers {
-    question_id: number;
-    question: string;
-    answers: AnswersArray[];
-    users_answer: Answer;
+interface Props {
+    userAnswers: Answers[];
+    setUserAnswers: React.Dispatch<React.SetStateAction<Answers[]>>;
 }
 
-const Questions: React.FC = () => {
+const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
     const navigate = useNavigate();
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
-    const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
 
-    console.log(userAnswers);
     // getting questions for selected topic
     useEffect(() => {
         const fetchQuestions = async () => {

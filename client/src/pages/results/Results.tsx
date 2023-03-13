@@ -1,6 +1,12 @@
 import React from 'react';
+import { Answers } from '../../modules';
 
-const Results = () => {
+interface Props {
+    userAnswers: Answers[];
+}
+
+const Results = ({ userAnswers }: Props) => {
+    console.log(userAnswers);
     return <div>Results</div>;
 };
 
