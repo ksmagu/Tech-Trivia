@@ -1,5 +1,7 @@
 import React from 'react';
 import { Answers } from '../../modules';
+import './results.scss';
+
 
 interface Props {
     userAnswers: Answers[];
@@ -7,7 +9,7 @@ interface Props {
 
 const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
-    return <div>Results</div>;
+    return <div className='results'>Results</div>;
 };
 
 export default Results;

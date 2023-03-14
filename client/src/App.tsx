@@ -10,9 +10,7 @@ import { Answers } from './modules';
 // import { useState } from 'react';
 
 const App: React.FC = () => {
-    // const [topic, setTopic] = useState<string>('');
 
-    // setTopic = {setTopic}
 
     const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
 
