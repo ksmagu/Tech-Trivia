@@ -26,7 +26,7 @@ const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
         const fetchQuestions = async () => {
             try {
                 const response: Response = await fetch(
-                    'http://localhost:8080/questions?topic=All'
+                    'http://localhost:8080/questions?topic=HTML'
                 );
                 const data = await response.json();
                 setQuestions(data);

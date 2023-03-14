@@ -18,7 +18,7 @@ $red: #d90429;
         overflow: hidden;
         margin: 1rem;
         border: 0.2rem solid black;
-        border-radius: 1rem;
+        border-radius: 2rem;
         box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 16px;
         background-color: $green;
         text-align: center;
@@ -29,7 +29,7 @@ $red: #d90429;
         }
         .output__counter {
             padding: 0.5rem 2rem 0 2rem;
-            text-align: right;
+            text-align: left;
         }
         .output__question {
             padding: 0.5rem 2rem 1rem 2rem;
