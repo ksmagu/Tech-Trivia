@@ -8,21 +8,31 @@ import { useNavigate } from 'react-router-dom';
 const Home: React.FC = () => {
     const [selectedTopic, setSelectedTopic] = useState<string>('');
     const [activeButton, setActiveButton] = useState<string>('');
-    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState<string>('');
+    const Navigate = useNavigate();
 
     const handleClick = (event: React.FormEvent<Element>) => {
         // Listening to click and setting topic of clicked button
         const topic = event.currentTarget.textContent || '';
         console.log(`Selected topic: ${topic}`);
 
-        // Set the active button and topic
+        // Setting the active button and topic
         setActiveButton(topic);
         setSelectedTopic(topic);
+        // Clearing error message
+        setErrorMessage('');
     };
 
     const handleStartClick = () => {
+        if (!selectedTopic) {
+            // Show error message if topic is not selected
+            setErrorMessage(
+                'Just select one of the orange buttons from the above!:)'
+            );
+            return;
+        }
         // Navigate to the Questions page with the selected topic
-        navigate(`/questions?topic=${selectedTopic}`);
+        Navigate(`/questions?topic=${selectedTopic}`);
         console.log(`Starting trivia for ${selectedTopic}`);
     };
 
@@ -30,19 +40,19 @@ const Home: React.FC = () => {
         <>
             <div className='wrapper'>
                 <div className='topHalf'>
-                    <img className='monster' src={Monster} alt='img' />
-                    <div className='welcome'>
+                    <img className='topHalf__monster' src={Monster} alt='img' />
+                    <div className='topHalf__welcome'>
                         <h2>WELCOME </h2>
                         <h2>to</h2>
                         <h1>TECH TRIVIA</h1>
                     </div>
-                    <img className='monster' src={Monster} alt='img' />
+                    <img className='topHalf__monster' src={Monster} alt='img' />
                 </div>
                 <div className='bottomHalf'>
-                    <h1 className='start'>
-                        Let's get started! Choose a topic:
+                    <h1 className='bottomHalf__start'>
+                        Let's get started! Select a topic:
                     </h1>
-                    <div className='topics'>
+                    <div className='bottomHalf__topics'>
                         <Button
                             color='$orange'
                             onClick={handleClick}
@@ -84,6 +94,10 @@ const Home: React.FC = () => {
                             START
                         </BigButton>
                     </div>
+                    {/* Showing error message if topic is not selected */}
+                    {errorMessage && (
+                        <p className='bottomHalf__error'>{errorMessage}</p>
+                    )}
                 </div>
             </div>
         </>
