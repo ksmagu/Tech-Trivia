@@ -123,9 +123,15 @@ const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
                                 currentQuestionIndex
                             ].topic.toUpperCase()} question`}
                         </h2>
-                        <h3 className='output__question'>
+                        <div className='output__counter'>
+                            <p>
+                                Question {currentQuestionIndex + 1} out of{' '}
+                                {questions.length}
+                            </p>
+                        </div>
+                        <h2 className='output__question'>
                             {questions[currentQuestionIndex].question}
-                        </h3>
+                        </h2>
                         {/*maps through all answers for current question and displays them  */}
                         {questions[currentQuestionIndex].answers.map(
                             (answer) => (
