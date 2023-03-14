@@ -1,6 +1,8 @@
 import React from 'react';
 import './results.scss';
 import { Answers } from '../../modules';
+import './results.scss';
+
 
 interface Props {
     userAnswers: Answers[];
