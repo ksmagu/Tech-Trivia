@@ -11,25 +11,32 @@ $red: #d90429;
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
     .output__card {
-        margin: 5rem;
+        overflow: hidden;
+        margin: 1rem;
         border: 0.2rem solid black;
-        border-radius: 2%;
+        border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 16px;
         background-color: $green;
         text-align: center;
         .output__topic {
-            width: 100%;
             border-bottom: 0.2rem solid black;
             padding: 1rem;
             background-color: $orange;
         }
-        .output__answers {
-            padding: 0.2rem 2rem;
+        .output__counter {
+            padding: 0.5rem 2rem 0 2rem;
             text-align: left;
         }
         .output__question {
-            padding: 2rem;
+            padding: 0.5rem 2rem 1rem 2rem;
+        }
+        .output__answers {
+            padding: 0.2rem 2rem;
+            text-align: left;
         }
 
         .output__error {
