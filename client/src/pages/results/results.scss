@@ -6,10 +6,48 @@ $yellow: #ffd500;
 $red: #d90429;
 
 .results {
-    height: 100vh;
     background-color: rgb(40, 196, 157);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     .answers {
-        width: 80%;
+        width: 90%;
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        .answers__card {
+            width: 100%;
+            overflow: hidden;
+            margin: 0.5rem;
+            border: 0.2rem solid black;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 16px;
+            background-color: rgb(200, 191, 231);
+
+            .answers__question {
+                color: whitesmoke;
+                border-bottom: 0.2rem solid black;
+                padding: 1rem 0.5rem;
+                background-color: rgb(29, 141, 114);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                h3 {
+                    width: 85%;
+                }
+                p {
+                    width: 15%;
+                    text-align: right;
+                }
+            }
+            .answers__possibleAnswers {
+                padding: 1rem 0;
+            }
+        }
     }
 }
 
