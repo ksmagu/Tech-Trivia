@@ -11,6 +11,13 @@ const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
     return (
         <div className='results'>
+            <div className='score'>
+                <h2 className='score__title'> YOUR SCORE</h2>
+                <div className='score__count'> 10 out of 20</div>
+                <h1 className="score__percent"> 50%</h1>
+                <div className="score__text"> Well, you need some studying to do!</div>
+            </div>
+
             <div className='answers'>
                 {userAnswers.map((answer, index) => (
                     <div className='answers__card' key={answer.question_id}>

@@ -20,10 +20,14 @@ const Home: React.FC<HomeProps> = ({selectedTopic, setSelectedTopic}) => {
         // Listening to click and setting topic of clicked button
         const topic = event.currentTarget.textContent || '';
         console.log(`Selected topic: ${topic}`);
-
+    
         // Setting the active button and topic
         setActiveButton(topic);
-        setSelectedTopic(topic);
+        if (topic === 'I know it all') {
+            setSelectedTopic('All');
+        } else {
+            setSelectedTopic(topic);
+        }
         // Clearing error message
         setErrorMessage('');
     };
