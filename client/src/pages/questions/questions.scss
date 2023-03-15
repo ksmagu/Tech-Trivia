@@ -47,7 +47,6 @@ $red: #d90429;
             font-weight: bold;
             height: 2rem;
             transition: all 0.3s ease;
-
         }
         .output__answers input[type="radio"] {
             display: none;
@@ -67,7 +66,7 @@ $red: #d90429;
             content: "";
             position: absolute;
             left: 0;
-            top: 50%;
+            top: 60%;
             transform: translateY(-50%);
             width: 1.2rem;
             height: 1.2rem;

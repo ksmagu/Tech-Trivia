@@ -5,8 +5,13 @@ import Monster from '../../monster.png';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
 
-const Home: React.FC = () => {
-    const [selectedTopic, setSelectedTopic] = useState<string>('');
+
+interface HomeProps {
+    selectedTopic: string;
+    setSelectedTopic: React.Dispatch<React.SetStateAction<string>>;
+  }
+
+const Home: React.FC<HomeProps> = ({selectedTopic, setSelectedTopic}) => {
     const [activeButton, setActiveButton] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
     const Navigate = useNavigate();
@@ -27,7 +32,7 @@ const Home: React.FC = () => {
         if (!selectedTopic) {
             // Show error message if topic is not selected
             setErrorMessage(
-                'Just select one of the orange buttons from the above!:)'
+                'Just select one of the orange buttons above!:)'
             );
             return;
         }
@@ -95,9 +100,9 @@ const Home: React.FC = () => {
                         </BigButton>
                     </div>
                     {/* Showing error message if topic is not selected */}
-                    {errorMessage && (
+                    {errorMessage ? (
                         <p className='bottomHalf__error'>{errorMessage}</p>
-                    )}
+                    ):    <p className='bottomHalf__error'></p>}
                 </div>
             </div>
         </>

@@ -13,9 +13,14 @@ interface QuestionsArray {
 interface Props {
     userAnswers: Answers[];
     setUserAnswers: React.Dispatch<React.SetStateAction<Answers[]>>;
+    selectedTopic: string;
 }
 
-const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
+const Questions: React.FC<Props> = ({
+    selectedTopic,
+    userAnswers,
+    setUserAnswers,
+}) => {
     const navigate = useNavigate();
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
@@ -26,7 +31,7 @@ const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
         const fetchQuestions = async () => {
             try {
                 const response: Response = await fetch(
-                    'http://localhost:8080/questions?topic=HTML'
+                    `http://localhost:8080/questions?topic=${selectedTopic}`
                 );
                 const data = await response.json();
                 setQuestions(data);
@@ -172,7 +177,6 @@ const Questions: React.FC<Props> = ({ userAnswers, setUserAnswers }: Props) => {
                             </Button>
                         )}
                         {/* If answer was not chosen displays error message */}
-                        <div className='emptyDiv'></div>
                         {noAnswerChosen ? (
                             <div className='output__error'>
                                 <p>If you don't know just guess!</p>
