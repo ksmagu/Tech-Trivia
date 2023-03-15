@@ -28,15 +28,12 @@ $red: #d90429;
             background-color: $orange;
         }
         .output__counter {
-
             padding: 1rem 2rem 0.2rem 2rem;
-\
             text-align: left;
         }
         .output__question {
             padding: 0.5rem 2rem 1rem 2rem;
             text-align: left;
-
         }
         .output__answers {
             padding: 0.2rem 2rem;
@@ -48,13 +45,12 @@ $red: #d90429;
             font-weight: bold;
             height: 2rem;
             transition: all 0.3s ease;
-
         }
-        .output__answers input[type="radio"] {
+        .output__answers input[type='radio'] {
             display: none;
         }
-        
-        .output__answers input[type="radio"] + label {
+
+        .output__answers input[type='radio'] + label {
             position: relative;
             display: inline-block;
             margin-right: 1.5rem;
@@ -63,9 +59,9 @@ $red: #d90429;
             font-size: 1rem;
             color: #000;
         }
-        
-        .output__answers input[type="radio"] + label:before {
-            content: "";
+
+        .output__answers input[type='radio'] + label:before {
+            content: '';
             position: absolute;
             left: 0;
             top: 50%;
@@ -77,15 +73,14 @@ $red: #d90429;
             background-color: lightgray;
             transition: all 0.3s ease;
         }
-        
-        .output__answers input[type="radio"]:checked + label:before {
+
+        .output__answers input[type='radio']:checked + label:before {
             background-color: $orange;
             border-color: $orange;
         }
-        
-        .output__answers input[type="radio"]:focus + label:before {
-            box-shadow: 0 0 0 0.3rem rgba(217,4,41,0.5);
-        }
 
+        .output__answers input[type='radio']:focus + label:before {
+            box-shadow: 0 0 0 0.3rem rgba(217, 4, 41, 0.5);
+        }
     }
 }
