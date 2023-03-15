@@ -8,7 +8,10 @@ $red: #d90429;
     background-color: $purple;
     box-sizing: border-box;
     min-height: 100vh;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
     .topHalf {
         display: flex;
         flex-direction: row;
@@ -56,7 +59,7 @@ $red: #d90429;
 
         .bottomHalf__start {
             color: $red;
-            margin-top: 2rem;
+            margin-top: 1rem;
             text-shadow: 1px 1px 1px black;
             text-align: center;
         }
@@ -70,7 +73,7 @@ $red: #d90429;
         .bottomHalf__error {
             color: $red;
             font-weight: bold;
-            height: 0.5rem;
+            // height: 0.5rem;
         }
     }
 }
