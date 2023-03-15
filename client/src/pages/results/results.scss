@@ -10,8 +10,42 @@ $red: #d90429;
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    .score {
+        width: 50%;
+        margin: 1rem;
+        border: 0.2rem solid black;
+        border-radius: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 16px;
+        background-color: $orange;
+        text-align: center;
+        overflow: hidden;
+        .score__title {
+            border-bottom: 0.2rem solid black;
+            padding: 1rem;
+            background-color: #f3d265;
+        }
+        .score__count {
+            padding: 1rem 2rem 0.2rem 2rem;
+            text-align: center;
+            color: whitesmoke;
+            padding-bottom: 0.5rem;
+        }
+        h1 {
+            color: #4a0dbc;
+            text-shadow: 2px 2px $yellow;
+            padding-bottom: 0.5rem;
+        }
+        .score__text {
+            padding: 0.5rem 4rem 2rem;
+            font-weight: bolder;
+            text-align: center;
+        }
+    }
+
     .answers {
-        width: 90%;
+        width: 80%;
         height: 100vh;
         display: flex;
         flex-wrap: wrap;
