@@ -3,7 +3,6 @@ import './results.scss';
 import { Answers } from '../../modules';
 import './results.scss';
 
-
 interface Props {
     userAnswers: Answers[];
 }
@@ -15,7 +14,7 @@ const Results = ({ userAnswers }: Props) => {
             <div className='answers'>
                 {userAnswers.map((answer, index) => (
                     <div className='answers__card' key={answer.question_id}>
-                        <div className='answers__question'>
+                        <div className='answers__question answers__question--correct'>
                             <h3>{answer.question}</h3>
 
                             <p>

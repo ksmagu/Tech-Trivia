@@ -1,4 +1,3 @@
-
 $orange: #e36414;
 $purple: #bbadff;
 $green: #52b788;
@@ -31,7 +30,6 @@ $red: #d90429;
                 color: whitesmoke;
                 border-bottom: 0.2rem solid black;
                 padding: 1rem 0.5rem;
-                background-color: rgb(29, 141, 114);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -44,10 +42,15 @@ $red: #d90429;
                     text-align: right;
                 }
             }
+            .answers__question--correct {
+                background-color: rgb(29, 141, 114);
+            }
+            .answers__question--incorrect {
+                background-color: #d90429;
+            }
             .answers__possibleAnswers {
                 padding: 1rem 0;
             }
         }
     }
 }
-
