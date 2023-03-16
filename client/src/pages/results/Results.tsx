@@ -9,12 +9,17 @@ interface Props {
 
 const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
+    let correctCount = 0;
+    //Counting percentage of correct answers
+    const scorePercent = Math.round((correctCount / userAnswers.length) * 100);
     return (
         <div className='results'>
             <div className='score'>
                 <h2 className='score__title'> YOUR SCORE</h2>
-                <div className='score__count'> 10 out of 20</div>
-                <h1 className='score__percent'> 50%</h1>
+                <div className='score__count'>
+                    {correctCount} out of {userAnswers.length}
+                </div>
+                <h1 className='score__percent'>{scorePercent}%</h1>
                 <div className='score__text'>
                     {' '}
                     Well, you need some studying to do!
