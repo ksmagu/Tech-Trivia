@@ -84,6 +84,13 @@ $red: #d90429;
             }
             .answers__possibleAnswers {
                 padding: 1rem 0;
+                ul {
+                    .answers__option {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                }
             }
         }
     }
