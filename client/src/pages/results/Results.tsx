@@ -2,7 +2,7 @@ import React from 'react';
 import './results.scss';
 import { Answers } from '../../modules';
 import './results.scss';
-
+import { GiCrossMark, GiCheckMark } from 'react-icons/gi';
 interface Props {
     userAnswers: Answers[];
 }
