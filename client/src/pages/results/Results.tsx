@@ -9,20 +9,41 @@ interface Props {
 
 const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
+
     let correctCount = 0;
+    //iterating over an array of user answers and checking if each user's selected answer is correct.
+    //The find() method is used to determine which answer was selected by the user for a particular question,
+    //by matching the id of the answer with the answer_id selected by the user.
+    //If a match is found, the selectedAnswer is set to the correct answer object.
+    userAnswers.forEach((answer) => {
+        const selectedAnswer = answer.answers.find(
+            (a) => a.id === answer.users_answer.answer_id
+        );
+        if (selectedAnswer?.correct) {
+            correctCount++;
+        }
+    });
     //Counting percentage of correct answers
     const scorePercent = Math.round((correctCount / userAnswers.length) * 100);
+
     return (
         <div className='results'>
             <div className='score'>
-                <h2 className='score__title'> YOUR SCORE</h2>
+                <h2 className='score__title'>YOUR SCORE</h2>
                 <div className='score__count'>
                     {correctCount} out of {userAnswers.length}
                 </div>
                 <h1 className='score__percent'>{scorePercent}%</h1>
                 <div className='score__text'>
-                    {' '}
-                    Well, you need some studying to do!
+                    {scorePercent === 100
+                        ? 'Perfect! Hard work pays off!'
+                        : scorePercent >= 80
+                        ? 'Well done! almost perfect. Can you make it perfect?'
+                        : scorePercent >= 70
+                        ? 'Not bad, but you can do better!'
+                        : scorePercent >= 50
+                        ? 'Well, good, but maybe study a little more!'
+                        : 'Well, you need some serious studying to do!'}
                 </div>
             </div>
 
