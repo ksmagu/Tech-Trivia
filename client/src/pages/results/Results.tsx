@@ -46,11 +46,14 @@ const Results = ({ userAnswers }: Props) => {
                             </div>
                             <div className='answers__possibleAnswers'>
                                 <ul>
-                                    {answer.answers.map((possibleAnswer) => (
-                                        <li key={possibleAnswer.id}>
-                                            {possibleAnswer.answer}
-                                        </li>
-                                    ))}
+                                    {answer.answers.map((possibleAnswer) => {
+                                        // Add logic to styles each answer next ====>
+                                        return (
+                                            <li key={possibleAnswer.id}>
+                                                {possibleAnswer.answer}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         </div>
