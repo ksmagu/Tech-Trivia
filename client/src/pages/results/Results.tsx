@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './results.scss';
 import { Answers } from '../../modules';
-import './results.scss';
+import Button from '../../components/button/Button';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
     userAnswers: Answers[];
@@ -9,12 +10,9 @@ interface Props {
 
 const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
+    const Navigate = useNavigate();
 
     let correctCount = 0;
-    //iterating over an array of user answers and checking if each user's selected answer is correct.
-    //The find() method is used to determine which answer was selected by the user for a particular question,
-    //by matching the id of the answer with the answer_id selected by the user.
-    //If a match is found, the selectedAnswer is set to the correct answer object.
     userAnswers.forEach((answer) => {
         const selectedAnswer = answer.answers.find(
             (a) => a.id === answer.users_answer.answer_id
@@ -23,8 +21,18 @@ const Results = ({ userAnswers }: Props) => {
             correctCount++;
         }
     });
-    //Counting percentage of correct answers
     const scorePercent = Math.round((correctCount / userAnswers.length) * 100);
+
+    const [showAnswers, setShowAnswers] = useState(false);
+
+    const toggleAnswers = () => {
+        setShowAnswers(!showAnswers);
+    };
+
+    const backHome = () => {
+        Navigate('/');
+        window.location.reload();
+    };
 
     return (
         <div className='results'>
@@ -46,43 +54,59 @@ const Results = ({ userAnswers }: Props) => {
                         : 'Well, you need some serious studying to do!'}
                 </div>
             </div>
-
-            <div className='answers'>
-                {userAnswers.map((answer, index) => {
-                    // using find method to find and answer from answers array  where question ID matches question ID from user_answer
-                    const selectedAnswer = answer.answers.find(
-                        (a) => a.id === answer.users_answer.answer_id
-                    );
-
-                    return (
-                        <div className='answers__card' key={answer.question_id}>
-                            <div
-                                // styling class used based on if answer was correct
-                                className={`answers__question ${
-                                    selectedAnswer?.correct
-                                        ? 'answers__question--correct'
-                                        : 'answers__question--incorrect'
-                                }`}
-                            >
-                                <h3>{answer.question}</h3>
-
-                                <p>
-                                    {index + 1}/{userAnswers.length}
-                                </p>
-                            </div>
-                            <div className='answers__possibleAnswers'>
-                                <ul>
-                                    {answer.answers.map((possibleAnswer) => (
-                                        <li key={possibleAnswer.id}>
-                                            {possibleAnswer.answer}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    );
-                })}
+            <div className='buttons'>
+                <Button color='$purple' onClick={toggleAnswers}>
+                    {showAnswers ? 'Hide Answers' : 'Show Answers'}
+                </Button>
+                <Button color='$purple' onClick={backHome}>
+                    Try Again
+                </Button>
+                <Button color='$purple' onClick={backHome}>
+                    Back to Trivia
+                </Button>
             </div>
+
+            {showAnswers && (
+                <div className='answers'>
+                    {userAnswers.map((answer, index) => {
+                        const selectedAnswer = answer.answers.find(
+                            (a) => a.id === answer.users_answer.answer_id
+                        );
+
+                        return (
+                            <div
+                                className='answers__card'
+                                key={answer.question_id}
+                            >
+                                <div
+                                    className={`answers__question ${
+                                        selectedAnswer?.correct
+                                            ? 'answers__question--correct'
+                                            : 'answers__question--incorrect'
+                                    }`}
+                                >
+                                    <h3>{answer.question}</h3>
+
+                                    <p>
+                                        {index + 1}/{userAnswers.length}
+                                    </p>
+                                </div>
+                                <div className='answers__possibleAnswers'>
+                                    <ul>
+                                        {answer.answers.map(
+                                            (possibleAnswer) => (
+                                                <li key={possibleAnswer.id}>
+                                                    {possibleAnswer.answer}
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     );
 };
