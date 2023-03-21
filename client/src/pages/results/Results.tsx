@@ -4,7 +4,6 @@ import { Answers } from '../../modules';
 import Button from '../../components/button/Button';
 import { useNavigate } from 'react-router-dom';
 
-
 import './results.scss';
 import { GiCrossMark, GiCheckMark } from 'react-icons/gi';
 
@@ -90,7 +89,6 @@ const Results = ({ userAnswers }: Props) => {
                                     }`}
                                 >
                                     <h3>{answer.question}</h3>
-
                                     <p>
                                         {index + 1}/{userAnswers.length}
                                     </p>
@@ -98,70 +96,88 @@ const Results = ({ userAnswers }: Props) => {
                                 <div className='answers__possibleAnswers'>
                                     <ul>
                                         {answer.answers.map(
-                                            (possibleAnswer) => (
-                                                <li key={possibleAnswer.id}>
-                                                    {possibleAnswer.answer}
-                                                </li>
-                                            )
+                                            (possibleAnswer) => {
+                                                // if user answer and correct answer matches
+                                                if (
+                                                    possibleAnswer.correct &&
+                                                    possibleAnswer.id ===
+                                                        answer.users_answer
+                                                            .answer_id
+                                                ) {
+                                                    return (
+                                                        <li
+                                                            key={
+                                                                possibleAnswer.id
+                                                            }
+                                                        >
+                                                            <div className='answers__option'>
+                                                                {
+                                                                    possibleAnswer.answer
+                                                                }
+                                                                <GiCheckMark color='green' />
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                    // if user answer is incorrect but it matches answer option
+                                                } else if (
+                                                    !possibleAnswer.correct &&
+                                                    possibleAnswer.id ===
+                                                        answer.users_answer
+                                                            .answer_id
+                                                ) {
+                                                    return (
+                                                        <li
+                                                            key={
+                                                                possibleAnswer.id
+                                                            }
+                                                        >
+                                                            <div className='answers__option'>
+                                                                {
+                                                                    possibleAnswer.answer
+                                                                }
+                                                                <GiCrossMark color='red' />
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                    // if the answer option is correct but not selected by user
+                                                } else if (
+                                                    possibleAnswer.correct
+                                                ) {
+                                                    return (
+                                                        <li
+                                                            key={
+                                                                possibleAnswer.id
+                                                            }
+                                                        >
+                                                            <div className='answers__option'>
+                                                                {
+                                                                    possibleAnswer.answer
+                                                                }
+                                                                <GiCheckMark color='green' />
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                    // if none of the above is true returns simple li element
+                                                } else {
+                                                    return (
+                                                        <li
+                                                            key={
+                                                                possibleAnswer.id
+                                                            }
+                                                        >
+                                                            {
+                                                                possibleAnswer.answer
+                                                            }
+                                                        </li>
+                                                    );
+                                                }
+                                            }
                                         )}
                                     </ul>
                                 </div>
-
                                 <p>
                                     {index + 1}/{userAnswers.length}
                                 </p>
-                            </div>
-                            <div className='answers__possibleAnswers'>
-                                <ul>
-                                    {answer.answers.map((possibleAnswer) => {
-                                        // if user answer and correct answer matches
-                                        if (
-                                            possibleAnswer.correct &&
-                                            possibleAnswer.id ===
-                                                answer.users_answer.answer_id
-                                        ) {
-                                            return (
-                                                <li key={possibleAnswer.id}>
-                                                    <div className='answers__option'>
-                                                        {possibleAnswer.answer}
-                                                        <GiCheckMark color='green' />
-                                                    </div>
-                                                </li>
-                                            );
-                                            // if user answer is incorrect but it matches answer option
-                                        } else if (
-                                            !possibleAnswer.correct &&
-                                            possibleAnswer.id ===
-                                                answer.users_answer.answer_id
-                                        ) {
-                                            return (
-                                                <li key={possibleAnswer.id}>
-                                                    <div className='answers__option'>
-                                                        {possibleAnswer.answer}
-                                                        <GiCrossMark color='red' />
-                                                    </div>
-                                                </li>
-                                            );
-                                            // if the answer option is correct but not selected by user
-                                        } else if (possibleAnswer.correct) {
-                                            return (
-                                                <li key={possibleAnswer.id}>
-                                                    <div className='answers__option'>
-                                                        {possibleAnswer.answer}
-                                                        <GiCheckMark color='green' />
-                                                    </div>
-                                                </li>
-                                            );
-                                            // if none of the above is true returns simple li element
-                                        } else {
-                                            return (
-                                                <li key={possibleAnswer.id}>
-                                                    {possibleAnswer.answer}
-                                                </li>
-                                            );
-                                        }
-                                    })}
-                                </ul>
                             </div>
                         );
                     })}
