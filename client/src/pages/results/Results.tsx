@@ -175,9 +175,6 @@ const Results = ({ userAnswers }: Props) => {
                                         )}
                                     </ul>
                                 </div>
-                                <p>
-                                    {index + 1}/{userAnswers.length}
-                                </p>
                             </div>
                         );
                     })}
