@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './results.scss';
 import { GiCrossMark, GiCheckMark } from 'react-icons/gi';
+import { RxDotFilled } from 'react-icons/rx';
 
 interface Props {
     userAnswers: Answers[];
@@ -106,15 +107,18 @@ const Results = ({ userAnswers }: Props) => {
                                                 ) {
                                                     return (
                                                         <li
+                                                            className='answers__option'
                                                             key={
                                                                 possibleAnswer.id
                                                             }
                                                         >
-                                                            <div className='answers__option'>
+                                                            <div className='answer__icon'>
+                                                                <GiCheckMark color='green' />
+                                                            </div>
+                                                            <div className='answer__text'>
                                                                 {
                                                                     possibleAnswer.answer
                                                                 }
-                                                                <GiCheckMark color='green' />
                                                             </div>
                                                         </li>
                                                     );
@@ -127,15 +131,18 @@ const Results = ({ userAnswers }: Props) => {
                                                 ) {
                                                     return (
                                                         <li
+                                                            className='answers__option'
                                                             key={
                                                                 possibleAnswer.id
                                                             }
                                                         >
-                                                            <div className='answers__option'>
+                                                            <div className='answer__icon'>
+                                                                <GiCrossMark color='red' />
+                                                            </div>
+                                                            <div className='answer__text'>
                                                                 {
                                                                     possibleAnswer.answer
                                                                 }
-                                                                <GiCrossMark color='red' />
                                                             </div>
                                                         </li>
                                                     );
@@ -145,15 +152,19 @@ const Results = ({ userAnswers }: Props) => {
                                                 ) {
                                                     return (
                                                         <li
+                                                            className='answers__option'
                                                             key={
                                                                 possibleAnswer.id
                                                             }
                                                         >
-                                                            <div className='answers__option'>
+                                                            <div className='answer__icon'>
+                                                                <GiCheckMark color='green' />
+                                                            </div>
+
+                                                            <div className='answer__text'>
                                                                 {
                                                                     possibleAnswer.answer
                                                                 }
-                                                                <GiCheckMark color='green' />
                                                             </div>
                                                         </li>
                                                     );
@@ -161,13 +172,19 @@ const Results = ({ userAnswers }: Props) => {
                                                 } else {
                                                     return (
                                                         <li
+                                                            className='answers__option'
                                                             key={
                                                                 possibleAnswer.id
                                                             }
                                                         >
-                                                            {
-                                                                possibleAnswer.answer
-                                                            }
+                                                            <div className='answer__icon'>
+                                                                <RxDotFilled />
+                                                            </div>
+                                                            <div className='answer__text'>
+                                                                {
+                                                                    possibleAnswer.answer
+                                                                }
+                                                            </div>
                                                         </li>
                                                     );
                                                 }
