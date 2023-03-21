@@ -5,7 +5,9 @@ import Button from '../../components/button/Button';
 import { useNavigate } from 'react-router-dom';
 
 import './results.scss';
-import { GiCrossMark, GiCheckMark } from 'react-icons/gi';
+import { FaCheck } from 'react-icons/fa';
+import { ImCross} from 'react-icons/im';
+
 import { RxDotFilled } from 'react-icons/rx';
 
 interface Props {
@@ -113,7 +115,7 @@ const Results = ({ userAnswers }: Props) => {
                                                             }
                                                         >
                                                             <div className='answer__icon'>
-                                                                <GiCheckMark color='green' />
+                                                                <FaCheck color='green' />
                                                             </div>
                                                             <div className='answer__text'>
                                                                 {
@@ -137,7 +139,7 @@ const Results = ({ userAnswers }: Props) => {
                                                             }
                                                         >
                                                             <div className='answer__icon'>
-                                                                <GiCrossMark color='red' />
+                                                                <ImCross color='red' />
                                                             </div>
                                                             <div className='answer__text'>
                                                                 {
@@ -158,7 +160,7 @@ const Results = ({ userAnswers }: Props) => {
                                                             }
                                                         >
                                                             <div className='answer__icon'>
-                                                                <GiCheckMark color='green' />
+                                                                <FaCheck color='green' />
                                                             </div>
 
                                                             <div className='answer__text'>
