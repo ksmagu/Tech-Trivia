@@ -43,11 +43,11 @@ $red: #d90429;
             font-weight: bolder;
             text-align: center;
         }
-        .buttons{
+        .buttons {
             display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row wrap;
         }
     }
 
@@ -93,9 +93,16 @@ $red: #d90429;
                 padding: 1rem 0;
                 ul {
                     .answers__option {
+                        list-style-type: none;
                         display: flex;
-                        justify-content: space-between;
                         align-items: center;
+                        justify-content: flex-start;
+                        .answer__icon {
+                            width: 5%;
+                        }
+                        .answer__text {
+                            width: 95%;
+                        }
                     }
                 }
             }
