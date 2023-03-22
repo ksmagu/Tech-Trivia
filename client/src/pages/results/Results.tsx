@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './results.scss';
 import { Answers } from '../../modules';
 import Button from '../../components/button/Button';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './results.scss';
 import { FaCheck } from 'react-icons/fa';
-import { ImCross} from 'react-icons/im';
+import { ImCross } from 'react-icons/im';
 
 import { RxDotFilled } from 'react-icons/rx';
 
@@ -16,7 +16,7 @@ interface Props {
 
 const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     let correctCount = 0;
     userAnswers.forEach((answer) => {
@@ -36,9 +36,29 @@ const Results = ({ userAnswers }: Props) => {
     };
 
     const backHome = () => {
-        Navigate('/');
+        navigate('/');
         window.location.reload();
     };
+
+    // navigates back to main page if page reloaded
+    useEffect(() => {
+        if (userAnswers.length === 0) {
+            navigate('/');
+        }
+    }, [userAnswers, navigate]);
+
+    // logic for popup for page reload
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+        event.preventDefault();
+    };
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     return (
         <div className='results'>
