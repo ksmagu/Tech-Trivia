@@ -26,9 +26,20 @@ const Questions: React.FC<Props> = ({
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
 
+    // navigates back to main page if page reloaded
+    useEffect(() => {
+        if (!selectedTopic) {
+            navigate('/');
+        }
+    }, [selectedTopic, navigate]);
+
     // getting questions for selected topic
     useEffect(() => {
         const fetchQuestions = async () => {
+            // navigates back to main page if page reloaded
+            if (!selectedTopic) {
+                navigate('/');
+            }
             try {
                 const response: Response = await fetch(
                     `http://localhost:8080/questions?topic=${selectedTopic}`
@@ -40,7 +51,7 @@ const Questions: React.FC<Props> = ({
             }
         };
         fetchQuestions();
-    }, []);
+    }, [selectedTopic]);
 
     // On button moves to next question
     const nextQuestion = (e: React.FormEvent) => {
@@ -112,6 +123,19 @@ const Questions: React.FC<Props> = ({
             ]);
         }
     };
+
+    // logic for popup for page reload
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+        event.preventDefault();
+    };
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     return (
         <>
