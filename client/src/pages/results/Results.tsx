@@ -18,6 +18,9 @@ const Results = ({ userAnswers }: Props) => {
     console.log(userAnswers);
     const navigate = useNavigate();
 
+    // Counting the number of correct answers given by a user by looping
+    // through an array of userAnswers, finding the selected answer for each question,
+    // and incrementing a counter for each correct answer.
     let correctCount = 0;
     userAnswers.forEach((answer) => {
         const selectedAnswer = answer.answers.find(
