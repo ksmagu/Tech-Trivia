@@ -6,7 +6,7 @@ $red: #d90429;
 
 .results {
     min-height: 100vh;
-    background-color: #95d5b2;
+    background-color: #8fe1ce;
     width: 100%;
     height: 100%;
     display: flex;
@@ -19,13 +19,13 @@ $red: #d90429;
         border: 0.2rem solid black;
         border-radius: 2rem;
         box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 20px;
-        background-color: #509bae;
+        background-color: #e36414;
         text-align: center;
         overflow: hidden;
         .score__title {
             border-bottom: 0.2rem solid black;
             padding: 1rem;
-            background-color: #dfca64;
+            background-color: #dab915;
         }
         .score__count {
             padding: 1rem 2rem 0.2rem 2rem;
@@ -34,7 +34,7 @@ $red: #d90429;
             padding-bottom: 0.5rem;
         }
         h1 {
-            color: #c61b38;
+            color: #501f81;
             text-shadow: 2px 2px $yellow;
             padding-bottom: 0.5rem;
         }
