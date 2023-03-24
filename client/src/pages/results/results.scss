@@ -53,11 +53,8 @@ $red: #d90429;
 
     .answers {
         width: 80%;
-        height: 100vh;
         display: flex;
         flex-wrap: wrap;
-        overflow-y: scroll;
-        scrollbar-width: none;
         .answers__card {
             width: 100%;
             overflow: hidden;
@@ -82,8 +79,6 @@ $red: #d90429;
                     width: 15%;
                     text-align: right;
                 }
-
-        
             }
             .answers__question--correct {
                 background-color: rgb(40, 143, 119);
