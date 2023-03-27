@@ -3,8 +3,7 @@ import './results.scss';
 import { Answers } from '../../modules';
 import Button from '../../components/button/Button';
 import { useNavigate } from 'react-router-dom';
-
-import './results.scss';
+import Monster from '../../monster.png';
 import { FaCheck } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
 
@@ -66,31 +65,34 @@ const Results = ({ userAnswers }: Props) => {
 
     return (
         <div className='results'>
-            <div className='score'>
-                <h2 className='score__title'>YOUR SCORE</h2>
-                <div className='score__count'>
-                    {correctCount} out of {userAnswers.length}
+            <div className='results__center'>
+                <img className='monster' src={Monster} alt='img' />
+                <div className='score'>
+                    <h2 className='score__title'>YOUR SCORE</h2>
+                    <div className='score__count'>
+                        {correctCount} out of {userAnswers.length}
+                    </div>
+                    <h1 className='score__percent'>{scorePercent}%</h1>
+                    <div className='score__text'>
+                        {scorePercent === 100
+                            ? 'Perfect! Hard work pays off!'
+                            : scorePercent >= 80
+                            ? 'Well done! almost perfect. Can you make it perfect?'
+                            : scorePercent >= 70
+                            ? 'Not bad, but you can do better!'
+                            : scorePercent >= 50
+                            ? 'Well, good, but maybe study a little more!'
+                            : 'Well, you need some serious studying to do!'}
+                    </div>
                 </div>
-                <h1 className='score__percent'>{scorePercent}%</h1>
-                <div className='score__text'>
-                    {scorePercent === 100
-                        ? 'Perfect! Hard work pays off!'
-                        : scorePercent >= 80
-                        ? 'Well done! almost perfect. Can you make it perfect?'
-                        : scorePercent >= 70
-                        ? 'Not bad, but you can do better!'
-                        : scorePercent >= 50
-                        ? 'Well, good, but maybe study a little more!'
-                        : 'Well, you need some serious studying to do!'}
-                </div>
+                <img className='monster' src={Monster} alt='img' />
             </div>
+
             <div className='buttons'>
-                <Button color='#bbadff' onClick={toggleAnswers}>
+                <Button color='#d264b6' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button color='green' onClick={backHome}>
-                    Try Again
-                </Button>
+                <Button onClick={backHome}>Try Again</Button>
                 <Button color='#dab915' onClick={backHome}>
                     Back to Trivia
                 </Button>

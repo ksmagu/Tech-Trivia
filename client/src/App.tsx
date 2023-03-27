@@ -12,7 +12,6 @@ import { Answers } from './modules';
 const App: React.FC = () => {
     const [selectedTopic, setSelectedTopic] = useState<string>('');
     const [userAnswers, setUserAnswers] = useState<Answers[]>([]);
-
     return (
         <Routes>
             <Route
