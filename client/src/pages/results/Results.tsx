@@ -85,13 +85,13 @@ const Results = ({ userAnswers }: Props) => {
                 </div>
             </div>
             <div className='buttons'>
-                <Button color='$purple' onClick={toggleAnswers}>
+                <Button color='#bbadff' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button color='$purple' onClick={backHome}>
+                <Button color='green' onClick={backHome}>
                     Try Again
                 </Button>
-                <Button color='$purple' onClick={backHome}>
+                <Button color='red' onClick={backHome}>
                     Back to Trivia
                 </Button>
             </div>
