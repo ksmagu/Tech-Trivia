@@ -18,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
         <button
             className={`button${active ? ' active' : ''}`}
             onClick={onClick}
+            style={{ backgroundColor: color }} // using the color prop to set the background color
         >
             {children}
         </button>

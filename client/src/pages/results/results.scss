@@ -10,9 +10,9 @@ $red: #d90429;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-flow: column wrap;
+    padding-top: 2rem;
     .score {
         width: 50%;
         margin: 1rem;
