@@ -40,7 +40,6 @@ const Results = ({ userAnswers }: Props) => {
 
     const backHome = () => {
         navigate('/');
-        window.location.reload();
     };
 
     // navigates back to main page if page reloaded
