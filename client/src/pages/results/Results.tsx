@@ -91,7 +91,7 @@ const Results = ({ userAnswers }: Props) => {
                 <Button color='green' onClick={backHome}>
                     Try Again
                 </Button>
-                <Button color='red' onClick={backHome}>
+                <Button color='#dab915' onClick={backHome}>
                     Back to Trivia
                 </Button>
             </div>
