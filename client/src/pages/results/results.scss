@@ -13,13 +13,43 @@ $red: #d90429;
     align-items: center;
     flex-flow: column wrap;
     padding-top: 2rem;
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+    }
+    .results__center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        .monster {
+            margin: 0rem;
+            width: 8rem;
+            animation: updown 4s linear infinite;
+            display: block;
+        }
+        @keyframes updown {
+            0% {
+                transform: translate(-0px, 0px);
+            }
+            50% {
+                transform: translate(0px, 20px);
+            }
+            100% {
+                transform: translate(-0px, -0px);
+            }
+        }
+    }
+
     .score {
         width: 50%;
         margin: 1rem;
         border: 0.2rem solid black;
         border-radius: 2rem;
         box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 20px;
-        background-color: #3d57cd;
+        background-color: #4660d3;
         text-align: center;
         overflow: hidden;
         .score__title {
@@ -28,7 +58,7 @@ $red: #d90429;
             background-color: #d264b6;
         }
         .score__count {
-            padding: 1rem 2rem 0.2rem 2rem;
+            padding: 1rem;
             text-align: center;
             color: whitesmoke;
             padding-bottom: 0.5rem;
@@ -39,15 +69,10 @@ $red: #d90429;
             padding-bottom: 0.5rem;
         }
         .score__text {
-            padding: 0.5rem 4rem 2rem;
+            padding: 0.5rem 2rem 2rem;
             font-weight: bolder;
             text-align: center;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-flow: row wrap;
+            color: rgb(0, 0, 0);
         }
     }
 
@@ -106,4 +131,20 @@ $red: #d90429;
             }
         }
     }
+}
+@media screen and (max-width: 610px) {
+    .results__center {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .monster {
+        margin: 0rem;
+        width: 8rem;
+        animation: updown 4s linear infinite;
+        display: block;
+        margin: 0 auto;
+    }
+
 }
