@@ -35,16 +35,17 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
 
     const [showAnswers, setShowAnswers] = useState(false);
 
+    //Button logic
     const toggleAnswers = () => {
         setShowAnswers(!showAnswers);
     };
 
     const backHome = () => {
-        setUserAnswers([])
+        setUserAnswers([]);
         navigate('/');
     };
     const tryAgain = () => {
-        setUserAnswers([])
+        setUserAnswers([]);
         navigate(`/questions?topic=${selectedTopic}`);
     };
 
@@ -98,8 +99,8 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
                 <Button color='#d264b6' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button onClick={tryAgain}>Try Again</Button>
-                <Button color='#dab915' onClick={backHome}>
+                <Button color='#aa7fea'onClick={tryAgain}>Try Again</Button>
+                <Button color='#f09605' onClick={backHome}>
                     Back to Trivia
                 </Button>
             </div>
