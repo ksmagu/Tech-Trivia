@@ -11,9 +11,11 @@ import { RxDotFilled } from 'react-icons/rx';
 
 interface Props {
     userAnswers: Answers[];
+    setUserAnswers: React.Dispatch<React.SetStateAction<Answers[]>>;
+    selectedTopic: string;
 }
 
-const Results = ({ userAnswers }: Props) => {
+const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
     console.log(userAnswers);
     const navigate = useNavigate();
 
@@ -38,7 +40,12 @@ const Results = ({ userAnswers }: Props) => {
     };
 
     const backHome = () => {
+        setUserAnswers([])
         navigate('/');
+    };
+    const tryAgain = () => {
+        setUserAnswers([])
+        navigate(`/questions?topic=${selectedTopic}`);
     };
 
     // navigates back to main page if page reloaded
@@ -91,7 +98,7 @@ const Results = ({ userAnswers }: Props) => {
                 <Button color='#d264b6' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button onClick={backHome}>Try Again</Button>
+                <Button onClick={tryAgain}>Try Again</Button>
                 <Button color='#dab915' onClick={backHome}>
                     Back to Trivia
                 </Button>

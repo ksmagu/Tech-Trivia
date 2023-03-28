@@ -7,7 +7,6 @@ import './App.css';
 import { useState } from 'react';
 import { Answers } from './modules';
 
-// import { useState } from 'react';
 
 const App: React.FC = () => {
     const [selectedTopic, setSelectedTopic] = useState<string>('');
@@ -33,11 +32,14 @@ const App: React.FC = () => {
                     />
                 }
             />
-            <Route path='*' element={<NotFound />} />
             <Route
                 path='/results'
-                element={<Results userAnswers={userAnswers} />}
+                element={<Results userAnswers={userAnswers}
+                setUserAnswers={setUserAnswers} 
+                selectedTopic={selectedTopic}
+                />}
             />
+            <Route path='*' element={<NotFound />} />
         </Routes>
     );
 };
