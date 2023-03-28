@@ -23,7 +23,6 @@ $red: #d90429;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-flow: row wrap;
         .monster {
             margin: 0rem;
             width: 8rem;
@@ -135,16 +134,12 @@ $red: #d90429;
 @media screen and (max-width: 610px) {
     .results__center {
         display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        .monster {
+            width: 8rem;
+            animation: updown 4s linear infinite;
+            display: block;
+            margin: 0 auto;
+        }
     }
-    .monster {
-        margin: 0rem;
-        width: 8rem;
-        animation: updown 4s linear infinite;
-        display: block;
-        margin: 0 auto;
-    }
-
 }
