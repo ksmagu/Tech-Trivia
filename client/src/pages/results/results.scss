@@ -12,7 +12,7 @@ $red: #d90429;
     display: flex;
     align-items: center;
     flex-flow: column wrap;
-    padding-top: 2rem;
+    padding: 2rem 0 2rem 0;
 
     .results__center {
         display: flex;
@@ -133,6 +133,13 @@ $red: #d90429;
     }
 }
 @media screen and (max-width: 700px) {
+    .results {
+        .answers {
+            width: 100%;
+            padding: 0 1rem 0 1rem;
+        }
+    }
+
     .results__center {
         display: flex;
         flex-direction: column;
