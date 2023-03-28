@@ -77,6 +77,7 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
                 <div className='score'>
                     <h2 className='score__title'>YOUR SCORE</h2>
                     <div className='score__count'>
+                        Correct <br/>
                         {correctCount} out of {userAnswers.length}
                     </div>
                     <h1 className='score__percent'>{scorePercent}%</h1>
@@ -99,8 +100,10 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
                 <Button color='#d264b6' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button color='#aa7fea'onClick={tryAgain}>Try Again</Button>
-                <Button color='#f09605' onClick={backHome}>
+                <Button color='#288F77' onClick={tryAgain}>
+                    Try Again
+                </Button>
+                <Button color='#aa7fea' onClick={backHome}>
                     Back to Trivia
                 </Button>
             </div>
