@@ -13,12 +13,7 @@ $red: #d90429;
     align-items: center;
     flex-flow: column wrap;
     padding-top: 2rem;
-    .buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: row wrap;
-    }
+
     .results__center {
         display: flex;
         align-items: center;
@@ -27,7 +22,6 @@ $red: #d90429;
             margin: 0rem;
             width: 8rem;
             animation: updown 4s linear infinite;
-            display: block;
         }
         @keyframes updown {
             0% {
@@ -41,9 +35,15 @@ $red: #d90429;
             }
         }
     }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+    }
 
     .score {
-        width: 50%;
+        // width: 60%;
         margin: 1rem;
         border: 0.2rem solid black;
         border-radius: 2rem;
@@ -131,15 +131,17 @@ $red: #d90429;
         }
     }
 }
-@media screen and (max-width: 610px) {
+@media screen and (max-width: 700px) {
     .results__center {
         display: flex;
         flex-direction: column;
-        .monster {
-            width: 8rem;
-            animation: updown 4s linear infinite;
-            display: block;
-            margin: 0 auto;
-        }
+        justify-content: center;
+        align-items: center;
+    }
+    .monster {
+        margin: 0rem;
+        width: 8rem;
+        animation: updown 4s linear infinite;
+        display: block;
     }
 }
