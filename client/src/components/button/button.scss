@@ -3,7 +3,7 @@ $purple: #bbadff;
 $green: #52b788;
 $yellow: #ffd500;
 $red: #d90429;
-button {
+.button {
     /* Removeing default button styling */
     border: none;
     outline: none;
@@ -11,10 +11,11 @@ button {
     /* Adding custom styling */
     cursor: pointer;
     margin: 1rem;
+    width: 185px;
     transition: all 0.2s ease;
     background-color: $orange;
     box-shadow: 0 0.3rem black, rgba(0, 0, 0, 0.363) -2px 7px 10px;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 0.5rem;
     border: 1px solid black;
     font-weight: 500;
