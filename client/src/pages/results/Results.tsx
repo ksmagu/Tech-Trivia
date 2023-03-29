@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Monster from '../../monster.png';
 import { FaCheck } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
-
 import { RxDotFilled } from 'react-icons/rx';
 
 interface Props {
@@ -40,11 +39,11 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
     };
 
     const backHome = () => {
-        setUserAnswers([])
+        setUserAnswers([]);
         navigate('/');
     };
     const tryAgain = () => {
-        setUserAnswers([])
+        setUserAnswers([]);
         navigate(`/questions?topic=${selectedTopic}`);
     };
 
@@ -68,6 +67,8 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
         };
     }, []);
+
+    // logic for browser back button press
 
     return (
         <div className='results'>
