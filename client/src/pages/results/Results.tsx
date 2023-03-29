@@ -87,9 +87,9 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
                             : scorePercent >= 80
                             ? 'Well done! almost perfect. Can you make it perfect?'
                             : scorePercent >= 70
-                            ? 'Not bad, but you can do better!'
+                            ? 'Good, but you can do better!'
                             : scorePercent >= 50
-                            ? 'Well, good, but maybe study a little more!'
+                            ? 'Not bad, but maybe study a little more!'
                             : 'Well, you need some serious studying to do!'}
                     </div>
                 </div>
