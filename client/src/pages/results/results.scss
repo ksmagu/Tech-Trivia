@@ -119,8 +119,9 @@ $violet: #aa7fea;
                     .answers__option {
                         list-style-type: none;
                         display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
+                        align-items: flex-start;
+                        justify-content:flex-start;
+                        margin-top: 0;
                         .answer__icon {
                             width: 1.5rem;
                             height: 1rem;
@@ -131,6 +132,7 @@ $violet: #aa7fea;
                     }
                 }
             }
+            
         }
     }
 }
@@ -154,4 +156,10 @@ $violet: #aa7fea;
         animation: updown 4s linear infinite;
         display: block;
     }
+}
+@media screen and (max-width: 450px) {
+    .button {
+        width: 210px;
+
+}
 }

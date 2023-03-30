@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import Button from '../../components/button/Button';
+import CheckBox from '../../components/checkBox/CheckBox';
 import BigButton from '../../components/bigButton/BigButton';
 import Monster from '../../monster.png';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
+
 
 interface HomeProps {
     selectedTopic: string;
@@ -47,9 +48,9 @@ const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic }) => {
             <div className='topHalf'>
                 <img className='topHalf__monster' src={Monster} alt='img' />
                 <div className='topHalf__welcome'>
-                    <h2>WELCOME </h2>
-                    <h2>to</h2>
-                    <h1>TECH TRIVIA</h1>
+                    <h2>WELCOME TO</h2>
+                    {/* <h2>to</h2> */}
+                    <h1>TECH-TRIVIA</h1>
                 </div>
                 <img className='topHalf__monster' src={Monster} alt='img' />
             </div>
@@ -58,41 +59,41 @@ const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic }) => {
                     Let's get started! Select a topic:
                 </h1>
                 <div className='bottomHalf__topics'>
-                    <Button
+                    <CheckBox
                         color='$orange'
                         onClick={handleClick}
                         active={activeButton === 'HTML'}
                     >
                         HTML
-                    </Button>
-                    <Button
+                    </CheckBox>
+                    <CheckBox
                         color='$orange'
                         onClick={handleClick}
                         active={activeButton === 'CSS'}
                     >
                         CSS
-                    </Button>
-                    <Button
+                    </CheckBox>
+                    <CheckBox
                         color='$orange'
                         onClick={handleClick}
                         active={activeButton === 'React'}
                     >
                         React
-                    </Button>
-                    <Button
+                    </CheckBox>
+                    <CheckBox
                         color='$orange'
                         onClick={handleClick}
                         active={activeButton === 'JavaScript'}
                     >
                         JavaScript
-                    </Button>
-                    <Button
+                    </CheckBox>
+                    <CheckBox
                         color='$orange'
                         onClick={handleClick}
                         active={activeButton === 'I know it all'}
                     >
                         I know it all
-                    </Button>
+                    </CheckBox>
                 </div>
                 <div>
                     <BigButton color='$yellow' onClick={handleStartClick}>
