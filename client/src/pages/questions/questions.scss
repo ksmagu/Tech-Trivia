@@ -23,6 +23,7 @@ $red: #d90429;
         background-color: $green;
         text-align: center;
         .output__topic {
+            font-family: 'Press Start 2P';
             border-bottom: 0.2rem solid black;
             padding: 1rem;
             background-color: #aa7fea;
@@ -74,8 +75,8 @@ $red: #d90429;
         }
 
         .output__answers input[type='radio']:checked + label:before {
-            background-color: $orange;
-            border-color: $orange;
+            background-color: #aa7fea;
+            border-color: black;
         }
 
         .output__answers input[type='radio']:focus + label:before {

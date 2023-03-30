@@ -9,7 +9,7 @@ $red: #d90429;
     border: none;
     outline: none;
     font-family: 'Press Start 2P';
-    background: url(../../unchecked.svg) left 10px center no-repeat;
+    background: url(../../radio.svg) left 10px center no-repeat;
     /* Adding custom styling */
     cursor: pointer;
     width: 33%;
@@ -29,7 +29,7 @@ $red: #d90429;
         box-shadow: none;
         transform: translateY(0.3rem);
         border: 2px solid black;
-        background: url(../../checkbox.svg) left 10px center no-repeat;
+        background: url(../../radiochecked.svg) left 10px center no-repeat;
     }
 }
 @media screen and (max-width: 950px) {
