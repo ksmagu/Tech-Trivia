@@ -50,26 +50,31 @@ $violet: #aa7fea;
         border: 0.2rem solid black;
         border-radius: 2rem;
         box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 20px;
-        background-color: #445dce;
+        background-color: #f3d265;
         text-align: center;
         overflow: hidden;
         .score__title {
+            font-family: 'Press Start 2P', cursive;
             border-bottom: 0.2rem solid black;
             padding: 1rem;
-            background-color: #c55bab;
+            background-color: #aa7fea;
         }
         .score__count {
             padding: 1rem;
             text-align: center;
-            color: whitesmoke;
             padding-bottom: 0.5rem;
+            font-weight: bolder;
+            
         }
         h1 {
-            color: #eb1177;
-            text-shadow: 1px 1px lightgray;
+            color: #52b788;
+            // text-shadow: 1px 1px lightgray;
             padding-bottom: 0.5rem;
+            font-size: 4rem;
         }
         .score__text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: small;
             padding: 0.5rem 2rem 2rem;
             font-weight: bolder;
             text-align: center;
@@ -108,7 +113,7 @@ $violet: #aa7fea;
                 }
             }
             .answers__question--correct {
-                background-color: #288F77;
+                background-color: #288f77;
             }
             .answers__question--incorrect {
                 background-color: #c61b38;
@@ -120,7 +125,7 @@ $violet: #aa7fea;
                         list-style-type: none;
                         display: flex;
                         align-items: flex-start;
-                        justify-content:flex-start;
+                        justify-content: flex-start;
                         margin-top: 0;
                         .answer__icon {
                             width: 1.5rem;
@@ -132,7 +137,6 @@ $violet: #aa7fea;
                     }
                 }
             }
-            
         }
     }
 }
@@ -160,6 +164,5 @@ $violet: #aa7fea;
 @media screen and (max-width: 450px) {
     .button {
         width: 210px;
-
-}
+    }
 }

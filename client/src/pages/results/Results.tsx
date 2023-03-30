@@ -100,7 +100,7 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
             </div>
 
             <div className='buttons'>
-                <Button color='#d264b6' onClick={toggleAnswers}>
+                <Button color='#aa7fea' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
                 <Button onClick={tryAgain} isSecondary='true'>
