@@ -9,24 +9,25 @@ $red: #d90429;
     outline: none;
     margin: 2rem;
     cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
     transition: all 0.2s ease;
-    background-color: #f09605;
+    background-color: #52b788;
     box-shadow: 0 0.3rem black, rgba(0, 0, 0, 0.363) -2px 7px 10px;
     padding: 1rem 9rem;
     border-radius: 0.5rem;
-    border: 1px solid black;
+    border: 2px solid black;
     font-weight: bolder;
     font-size: larger;
     color: white;
     text-align: center;
-    text-shadow: 1px 1px 2px black;
+    // text-shadow: 1px 1px 2px black;
 
     &:active {
         box-shadow: none;
         transform: translateY(0.3rem);
         background-color: #ce8002;
         color: rgb(197, 196, 196);
-        border: 1px solid black;
+        border: 2px solid black;
     }
 }
 @media screen and (max-width: 450px) {

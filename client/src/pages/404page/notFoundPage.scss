@@ -13,10 +13,10 @@
         align-items: center;
         justify-content: center;
         .monster {
-          margin: 0rem;
-          width: 10rem;
-          animation: updown 4s linear infinite;
-      }
+            margin: 0rem;
+            width: 10rem;
+            animation: updown 4s linear infinite;
+        }
     }
 
     .notFoundPage__title {
@@ -41,16 +41,16 @@
 }
 
 @media screen and (max-width: 700px) {
-.notFoundPage__wrapper{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.monster {
-  margin: 2rem;
-  width: 8rem;
-  animation: updown 4s linear infinite;
-  display: block;
-}
+    .notFoundPage__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .monster {
+        margin: 2rem;
+        width: 8rem;
+        animation: updown 4s linear infinite;
+        display: block;
+    }
 }

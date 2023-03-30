@@ -61,6 +61,9 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
         event.preventDefault();
         event.returnValue = `Are you sure you want to leave?`;
     };
+    window.onhashchange = function () {
+        console.log('ja jabu gusey');
+    };
 
     useEffect(() => {
         window.addEventListener('beforeunload', handleBeforeUnload);
@@ -78,7 +81,7 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
                 <div className='score'>
                     <h2 className='score__title'>YOUR SCORE</h2>
                     <div className='score__count'>
-                        Correct <br/>
+                        Correct <br />
                         {correctCount} out of {userAnswers.length}
                     </div>
                     <h1 className='score__percent'>{scorePercent}%</h1>
@@ -101,10 +104,10 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
                 <Button color='#d264b6' onClick={toggleAnswers}>
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button color='#288F77' onClick={tryAgain}>
+                <Button onClick={tryAgain} isSecondary='true'>
                     Try Again
                 </Button>
-                <Button color='#aa7fea' onClick={backHome}>
+                <Button onClick={backHome} isSecondary='true'>
                     Back to Trivia
                 </Button>
             </div>
