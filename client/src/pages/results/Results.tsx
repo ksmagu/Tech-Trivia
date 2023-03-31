@@ -68,8 +68,6 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
         };
     }, []);
 
-    // logic for browser back button press
-
     return (
         <div className='results'>
             <div className='results__center'>
