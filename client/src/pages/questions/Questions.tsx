@@ -25,7 +25,7 @@ const Questions: React.FC<Props> = ({
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
-
+    console.log(userAnswers);
     // navigates back to main page if page reloaded
     useEffect(() => {
         if (!selectedTopic) {
@@ -51,7 +51,7 @@ const Questions: React.FC<Props> = ({
             }
         };
         fetchQuestions();
-    }, [selectedTopic]);
+    }, [selectedTopic, navigate]);
 
     // On button moves to next question
     const nextQuestion = (e: React.FormEvent) => {
