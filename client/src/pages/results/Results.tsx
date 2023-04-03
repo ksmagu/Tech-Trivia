@@ -61,9 +61,7 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
         event.preventDefault();
         event.returnValue = `Are you sure you want to leave?`;
     };
-    window.onhashchange = function () {
-        console.log('ja jabu gusey');
-    };
+
 
     useEffect(() => {
         window.addEventListener('beforeunload', handleBeforeUnload);

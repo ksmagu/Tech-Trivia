@@ -48,7 +48,7 @@ $violet: #aa7fea;
         // width: 60%;
         margin: 1rem;
         border: 0.2rem solid black;
-        border-radius: 2rem;
+        border-radius: 1.5rem;
         box-shadow: rgba(0, 0, 0, 0.47) 0px 4px 20px;
         background-color: #f3d265;
         text-align: center;
@@ -64,10 +64,9 @@ $violet: #aa7fea;
             text-align: center;
             padding-bottom: 0.5rem;
             font-weight: bolder;
-            
         }
         h1 {
-            color: #52b788;
+            color: #41976f;
             text-shadow: 1px 1px #6f529a;
             padding-bottom: 0.5rem;
             font-size: 4rem;
@@ -116,7 +115,7 @@ $violet: #aa7fea;
                 background-color: #288f77;
             }
             .answers__question--incorrect {
-                background-color: #c61b38;
+                background-color: #9f2c0c;
             }
             .answers__possibleAnswers {
                 padding: 1rem 1rem 1rem 0;
