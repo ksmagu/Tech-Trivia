@@ -5,7 +5,6 @@ import Monster from '../../monster.png';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
 
-
 interface HomeProps {
     selectedTopic: string;
     setSelectedTopic: React.Dispatch<React.SetStateAction<string>>;
@@ -15,6 +14,7 @@ const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic }) => {
     const [activeButton, setActiveButton] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
     const Navigate = useNavigate();
+    console.log(window.history.state);
 
     const handleClick = (event: React.FormEvent<Element>) => {
         // Listening to click and setting topic of clicked button

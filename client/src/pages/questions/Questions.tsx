@@ -26,6 +26,7 @@ const Questions: React.FC<Props> = ({
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
     console.log(userAnswers);
+    console.log(window.history.state);
     // navigates back to main page if page reloaded
     useEffect(() => {
         if (!selectedTopic) {

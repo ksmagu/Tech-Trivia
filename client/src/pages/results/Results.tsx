@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './results.scss';
 import { Answers } from '../../modules';
 import Button from '../../components/button/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Monster from '../../monster.png';
 import { FaCheck } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
