@@ -25,6 +25,7 @@ const Questions: React.FC<Props> = ({
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
+    const [disabled, setDisabled] = useState(true);
     console.log(userAnswers);
     console.log(window.history.state);
     // navigates back to main page if page reloaded
@@ -64,6 +65,11 @@ const Questions: React.FC<Props> = ({
             // if there in no answer chosen setting the state
             setNoAnswerChosen(true);
         }
+    };
+    // on button click moving back to previous question
+    const previousQuestion = (e: React.FormEvent) => {
+        e.preventDefault();
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
     };
 
     // on the last question button click relocates to show results
@@ -125,6 +131,15 @@ const Questions: React.FC<Props> = ({
         }
     };
 
+    // logic for disabling back button if its on the first question
+    useEffect(() => {
+        if (currentQuestionIndex === 0) {
+            setDisabled(true);
+        } else {
+            setDisabled(false);
+        }
+    }, [disabled, currentQuestionIndex]);
+
     // logic for popup for page reload
 
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
@@ -185,9 +200,17 @@ const Questions: React.FC<Props> = ({
                                 </div>
                             )
                         )}
+                        <Button
+                            color='$purple'
+                            disabled={disabled}
+                            onClick={(e) => previousQuestion(e)}
+                        >
+                            BACK
+                        </Button>
 
                         {currentQuestionIndex < questions.length - 1 ? ( // Only show the NEXT button if there are more questions to display
                             <Button
+                                disabled={false}
                                 color='$purple'
                                 onClick={(e) => nextQuestion(e)}
                             >
@@ -196,6 +219,7 @@ const Questions: React.FC<Props> = ({
                         ) : (
                             // Display a FINISH button instead of NEXT button for the last question
                             <Button
+                                disabled={false}
                                 color='$purple'
                                 onClick={(e) => showResults(e)}
                             >
