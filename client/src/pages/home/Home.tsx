@@ -4,13 +4,16 @@ import BigButton from '../../components/bigButton/BigButton';
 import Monster from '../../monster.png';
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
+import { Answers } from '../../modules';
+
 
 interface HomeProps {
     selectedTopic: string;
     setSelectedTopic: React.Dispatch<React.SetStateAction<string>>;
+    setUserAnswers: React.Dispatch<React.SetStateAction<Answers[]>>;
 }
 
-const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic }) => {
+const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic, setUserAnswers}) => {
     const [activeButton, setActiveButton] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
     const Navigate = useNavigate();
@@ -33,6 +36,7 @@ const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic }) => {
     };
 
     const handleStartClick = () => {
+        setUserAnswers([]);
         if (!selectedTopic) {
             // Show error message if topic is not selected
             setErrorMessage('Just select one of the orange buttons above!:)');
