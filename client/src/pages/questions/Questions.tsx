@@ -131,9 +131,10 @@ const Questions: React.FC<Props> = ({
         }
     };
 
-    // logic for disabling back button if its on the first question
+    // logic for disabling back button if its on the first question and to reset user answers if its on the first question
     useEffect(() => {
         if (currentQuestionIndex === 0) {
+            setUserAnswers([]);
             setDisabled(true);
         } else {
             setDisabled(false);
