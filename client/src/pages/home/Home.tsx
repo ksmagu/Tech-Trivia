@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { Answers } from '../../modules';
 
 
-
 interface HomeProps {
     selectedTopic: string;
     setSelectedTopic: React.Dispatch<React.SetStateAction<string>>;
@@ -18,6 +17,7 @@ const Home: React.FC<HomeProps> = ({ selectedTopic, setSelectedTopic, setUserAns
     const [activeButton, setActiveButton] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
     const Navigate = useNavigate();
+    console.log(window.history.state);
 
     const handleClick = (event: React.FormEvent<Element>) => {
         // Listening to click and setting topic of clicked button
