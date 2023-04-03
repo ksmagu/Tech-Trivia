@@ -62,7 +62,6 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
         event.returnValue = `Are you sure you want to leave?`;
     };
 
-
     useEffect(() => {
         window.addEventListener('beforeunload', handleBeforeUnload);
         return () => {
@@ -97,13 +96,17 @@ const Results = ({ userAnswers, setUserAnswers, selectedTopic }: Props) => {
             </div>
 
             <div className='buttons'>
-                <Button color='#aa7fea' onClick={toggleAnswers}>
+                <Button
+                    disabled={false}
+                    color='#aa7fea'
+                    onClick={toggleAnswers}
+                >
                     {showAnswers ? 'Hide Answers' : 'Show Answers'}
                 </Button>
-                <Button onClick={tryAgain} isSecondary='true'>
+                <Button disabled={false} onClick={tryAgain} isSecondary='true'>
                     Try Again
                 </Button>
-                <Button onClick={backHome} isSecondary='true'>
+                <Button disabled={false} onClick={backHome} isSecondary='true'>
                     Back to Trivia
                 </Button>
             </div>

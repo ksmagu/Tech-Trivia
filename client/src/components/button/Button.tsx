@@ -7,6 +7,7 @@ interface ButtonProps {
     active?: boolean;
     children?: React.ReactNode;
     isSecondary?: string;
+    disabled: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,11 +16,15 @@ const Button: React.FC<ButtonProps> = ({
     active,
     children,
     isSecondary,
+    disabled,
 }) => {
     return (
         <button
-            className={`button${active ? ' active' : ''} ${isSecondary ? 'secondary' : null}`}
+            className={`button${active ? ' active' : ''} ${
+                isSecondary ? 'secondary' : null
+            }`}
             onClick={onClick}
+            disabled={disabled}
             style={{ backgroundColor: color }} // using the color prop to set the background color
         >
             {children}
