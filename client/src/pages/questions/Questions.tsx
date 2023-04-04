@@ -139,7 +139,7 @@ const Questions: React.FC<Props> = ({
         } else {
             setDisabled(false);
         }
-    }, [disabled, currentQuestionIndex]);
+    }, [disabled, currentQuestionIndex, setUserAnswers]);
 
     // logic for popup for page reload
 
@@ -194,6 +194,14 @@ const Questions: React.FC<Props> = ({
                                         ].id.toString()}
                                         onChange={(e) => handleAnswerChange(e)}
                                         value={answer.answer}
+                                        // this checks if answer id matches the ID of the user answer and to display answer as marked if it was chosen before
+                                        checked={
+                                            userAnswers[currentQuestionIndex] &&
+                                            answer.id ===
+                                                userAnswers[
+                                                    currentQuestionIndex
+                                                ].users_answer.answer_id
+                                        }
                                     />
                                     <label htmlFor={answer.id.toString()}>
                                         {answer.answer}
