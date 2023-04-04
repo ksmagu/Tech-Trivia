@@ -7,7 +7,7 @@ interface ButtonProps {
     active?: boolean;
     children?: React.ReactNode;
     isSecondary?: string;
-    disabled: boolean;
+    disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
