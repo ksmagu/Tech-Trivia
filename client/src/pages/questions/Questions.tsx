@@ -24,10 +24,12 @@ const Questions: React.FC<Props> = ({
     const navigate = useNavigate();
     const [questions, setQuestions] = useState<QuestionsArray[]>([]); // Saves fetched questions
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Keep track of the current question index
+    const [previousQuestionIndex, setPreviousQuestionIndex] = useState(-1);
     const [noAnswerChosen, setNoAnswerChosen] = useState(false);
     const [disabled, setDisabled] = useState(true);
+    console.log(` current ${currentQuestionIndex}`);
+    console.log(`previous ${previousQuestionIndex}`);
     console.log(userAnswers);
-    console.log(window.history.state);
     // navigates back to main page if page reloaded
     useEffect(() => {
         if (!selectedTopic) {
@@ -131,15 +133,26 @@ const Questions: React.FC<Props> = ({
         }
     };
 
+    // use effect to determine previous question index value
+    useEffect(() => {
+        if (currentQuestionIndex > previousQuestionIndex) {
+            setPreviousQuestionIndex(currentQuestionIndex - 1);
+        } else {
+            setPreviousQuestionIndex(currentQuestionIndex + 1);
+        }
+    }, [currentQuestionIndex, previousQuestionIndex]);
+
     // logic for disabling back button if its on the first question and to reset user answers if its on the first question
     useEffect(() => {
-        if (currentQuestionIndex === 0) {
+        if (currentQuestionIndex === 0 && previousQuestionIndex === -1) {
             setUserAnswers([]);
+        }
+        if (currentQuestionIndex === 0) {
             setDisabled(true);
         } else {
             setDisabled(false);
         }
-    }, [disabled, currentQuestionIndex, setUserAnswers]);
+    }, [currentQuestionIndex, previousQuestionIndex, setUserAnswers]);
 
     // logic for popup for page reload
 
@@ -180,61 +193,70 @@ const Questions: React.FC<Props> = ({
                             {questions[currentQuestionIndex].question}
                         </h2>
                         {/*maps through all answers for current question and displays them  */}
-                        {questions[currentQuestionIndex].answers.map(
-                            (answer) => (
-                                <div
-                                    className='output__answers'
-                                    key={answer.id}
-                                >
-                                    <input
-                                        type='radio'
-                                        id={answer.id.toString()}
-                                        name={questions[
-                                            currentQuestionIndex
-                                        ].id.toString()}
-                                        onChange={(e) => handleAnswerChange(e)}
-                                        value={answer.answer}
-                                        // this checks if answer id matches the ID of the user answer and to display answer as marked if it was chosen before
-                                        checked={
-                                            userAnswers[currentQuestionIndex] &&
-                                            answer.id ===
+                        <div className='output__wrapper'>
+                            {questions[currentQuestionIndex].answers.map(
+                                (answer) => (
+                                    <div
+                                        className='output__answers'
+                                        key={answer.id}
+                                    >
+                                        <input
+                                            type='radio'
+                                            id={answer.id.toString()}
+                                            name={questions[
+                                                currentQuestionIndex
+                                            ].id.toString()}
+                                            onChange={(e) =>
+                                                handleAnswerChange(e)
+                                            }
+                                            value={answer.answer}
+                                            // this checks if answer id matches the ID of the user answer and to display answer as marked if it was chosen before
+                                            checked={
                                                 userAnswers[
                                                     currentQuestionIndex
-                                                ].users_answer.answer_id
-                                        }
-                                    />
-                                    <label htmlFor={answer.id.toString()}>
-                                        {answer.answer}
-                                    </label>
-                                </div>
-                            )
-                        )}
-                        <Button
-                            color='$purple'
-                            disabled={disabled}
-                            onClick={(e) => previousQuestion(e)}
-                        >
-                            BACK
-                        </Button>
+                                                ] &&
+                                                answer.id ===
+                                                    userAnswers[
+                                                        currentQuestionIndex
+                                                    ].users_answer.answer_id
+                                            }
+                                        />
+                                        <label htmlFor={answer.id.toString()}>
+                                            {answer.answer}
+                                        </label>
+                                    </div>
+                                )
+                            )}
+                        </div>
+                        <div className='output__buttons'>
+                            <Button
+                                color='$purple'
+                                disabled={disabled}
+                                onClick={(e) => previousQuestion(e)}
+                            >
+                                BACK
+                            </Button>
 
-                        {currentQuestionIndex < questions.length - 1 ? ( // Only show the NEXT button if there are more questions to display
-                            <Button
-                                disabled={false}
-                                color='$purple'
-                                onClick={(e) => nextQuestion(e)}
-                            >
-                                NEXT
-                            </Button>
-                        ) : (
-                            // Display a FINISH button instead of NEXT button for the last question
-                            <Button
-                                disabled={false}
-                                color='$purple'
-                                onClick={(e) => showResults(e)}
-                            >
-                                FINISH
-                            </Button>
-                        )}
+                            {currentQuestionIndex < questions.length - 1 ? ( // Only show the NEXT button if there are more questions to display
+                                <Button
+                                    disabled={false}
+                                    color='$purple'
+                                    onClick={(e) => nextQuestion(e)}
+                                >
+                                    NEXT
+                                </Button>
+                            ) : (
+                                // Display a FINISH button instead of NEXT button for the last question
+                                <Button
+                                    disabled={false}
+                                    color='$purple'
+                                    onClick={(e) => showResults(e)}
+                                >
+                                    FINISH
+                                </Button>
+                            )}
+                        </div>
+
                         {/* If answer was not chosen displays error message */}
                         {noAnswerChosen ? (
                             <div className='output__error'>
