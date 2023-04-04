@@ -13,7 +13,7 @@ $red: #d90429;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     .output__card {
         overflow: hidden;
         margin: 1rem;
@@ -36,9 +36,15 @@ $red: #d90429;
             padding: 0.5rem 2rem 1rem 2rem;
             text-align: left;
         }
-        .output__answers {
-            padding: 0.2rem 2rem;
-            text-align: left;
+        .output__wrapper {
+            padding-bottom: 1rem;
+            .output__answers {
+                padding: 0.2rem 2rem;
+                text-align: left;
+            }
+        }
+        .output__buttons {
+            padding: 0 2rem;
         }
         .output__error {
             color: $red;
