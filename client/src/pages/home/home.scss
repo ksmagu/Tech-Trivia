@@ -4,9 +4,13 @@ $green: #52b788;
 $yellow: #ffd500;
 $red: #d90429;
 
-.wrapper {
+body{
     background-color: $purple;
-    width: 100%;
+}
+.wrapper {
+    // background-color: $purple;
+    min-width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,12 +59,12 @@ $red: #d90429;
             }
         }
     }
-
     .bottomHalf {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: $purple;
 
         .bottomHalf__start {
             font-family: 'Press Start 2P';
